@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+  @font-face {
+    font-family: 'FoundersGrotesk';
+    src: url('frontend/src/font/FoundersGroteskXCond-SmBd.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+
+  @font-face {
+    font-family: 'NeueMontreal';
+    src: url('frontend/src/font/NeueMontreal-Regular.ttf') format('truetype');
+    font-style: normal;
+  }
+  
