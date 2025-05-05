@@ -9,7 +9,7 @@ function App() {
     <Router>
       <div className="relative min-h-screen bg-gray-100 font-founders">
         {/* 👉 Centered Page Content */}
-        <div className="flex items-center justify-center p-20">
+        <div className="flex items-center justify-center md:p-16">
           <div className="md:w-full  max-w-4xl bg-white shadow-xl rounded-xl p-6">
             <Routes>
               <Route
