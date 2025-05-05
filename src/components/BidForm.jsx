@@ -120,6 +120,7 @@ export default function BidForm() {
             value={name}
             onChange={handleNameChange}
             required
+            autoComplete="on"
           />
           {nameSuggestions.length > 0 && (
             <ul className="absolute z-10 bg-white border w-full mt-1 max-h-40 overflow-y-auto">
@@ -145,6 +146,7 @@ export default function BidForm() {
             value={phone}
             onChange={handlePhoneChange}
             required
+            autoComplete="on"
           />
           {phoneSuggestions.length > 0 && (
             <ul className="absolute z-10 bg-white border w-full mt-1 max-h-40 overflow-y-auto">
