@@ -77,7 +77,7 @@ export default function BidForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(`${process.env.REACT_APP_API_URL}/api/bids`, {
+      await axios.post(`${import.meta.env.VITE_API_URL}/api/bids`, {
         name,
         phone,
         amount: Number(amount),

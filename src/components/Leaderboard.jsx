@@ -11,8 +11,8 @@ export default function Leaderboard() {
     const fetchBids = async () => {
       try {
         const res = await axios.get(
-          `${process.env.REACT_APP_API_URL}/api/bids/leaderboard`
-        );
+          `${import.meta.env.VITE_API_URL}/api/bids/leaderboard`    
+        ); 
         setBids(res.data);
       } catch (err) {
         console.error("Failed to fetch leaderboard", err);
