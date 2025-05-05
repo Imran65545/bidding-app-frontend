@@ -11,7 +11,7 @@ export default function Leaderboard() {
     const fetchBids = async () => {
       try {
         const res = await axios.get(
-          "http://localhost:5000/api/bids/leaderboard"
+          `${process.env.REACT_APP_API_URL}/api/bids/leaderboard`
         );
         setBids(res.data);
       } catch (err) {
