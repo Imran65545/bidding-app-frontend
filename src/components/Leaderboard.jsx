@@ -11,8 +11,9 @@ export default function Leaderboard() {
     const fetchBids = async () => {
       try {
         const res = await axios.get(
-          `${import.meta.env.VITE_API_URL}/api/bids/leaderboard`    
-        ); 
+          `${import.meta.env.VITE_API_URL}/api/bids/leaderboard`
+        );
+        console.log(res.data);
         setBids(res.data);
       } catch (err) {
         console.error("Failed to fetch leaderboard", err);
@@ -91,6 +92,9 @@ export default function Leaderboard() {
                   <div className="sm:w-3/6 text-center break-words">
                     {bid.name}
                   </div>
+                  <div className=" text-gray-600 lowercase">{bid._id}</div>
+
+
                   <div className="sm:w-2/6 text-right break-words text-[13px] sm:text-lg">
                     ₹{bid.amount.toLocaleString()}
                   </div>
