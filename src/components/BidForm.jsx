@@ -40,18 +40,29 @@ export default function BidForm() {
     }
   };
 
-  const handleNameChange = (e) => {
-    const input = e.target.value;
-    setName(input);
-    if (input.length === 0) {
-      setNameSuggestions([]);
-    } else {
-      const filtered = allNames.filter((n) =>
-        n.toLowerCase().startsWith(input.toLowerCase())
+  const fetchNameSuggestions = async (query) => {
+    try {
+      const res = await axios.get(
+        `${import.meta.env.VITE_API_URL}/api/bids/suggestions?type=name&query=${query}`
       );
-      setNameSuggestions(filtered);
+      setNameSuggestions(res.data);
+    } catch (err) {
+      console.error("Name suggestions fetch failed", err);
     }
   };
+  
+
+  const handleNameChange = async (e) => {
+    const input = e.target.value;
+    setName(input);
+  
+    if (input.length > 0) {
+      await fetchNameSuggestions(input);
+    } else {
+      setNameSuggestions([]);
+    }
+  };
+  
 
   const handlePhoneChange = async (e) => {
     const input = e.target.value;
