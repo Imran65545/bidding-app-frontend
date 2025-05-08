@@ -76,26 +76,51 @@ export default function Leaderboard() {
 
           <div className="max-h-[400px] overflow-y-auto pr-2">
             <ul className="space-y-2">
+              <div className="hidden sm:flex justify-between items-center font-bold uppercase text-sm text-gray-600 px-3 py-2 border-b">
+                <div className="sm:w-1/6 text-left">Rank</div>
+                <div className="sm:w-3/6 text-center">Donor Name</div>
+                <div className="sm:w-1/6 text-left">Phone</div>
+                <div className="sm:w-2/6 text-right">Amount</div>
+              </div>
+
               {bids.map((bid, index) => (
                 <li
                   key={bid._id}
                   className={`flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2 border p-3 rounded-xl font-medium text-sm sm:text-lg uppercase
-          ${
-            index === 0
-              ? "bg-green-400 text-black"
-              : index === 1
-              ? "bg-gray-300 text-black"
-              : "bg-white"
-          }`}
+      ${
+        index === 0
+          ? "bg-green-400 text-black"
+          : index === 1
+          ? "bg-gray-300 text-black"
+          : "bg-white"
+      }`}
                 >
-                  <div className="sm:w-1/6 text-left">#{index + 1}</div>
-                  <div className="sm:w-3/6 text-center break-words">
+                  {/* Mobile Labels */}
+                  <div className="flex sm:hidden justify-between w-full text-left">
+                    <span className="font-bold">Rank:</span> #{index + 1}
+                  </div>
+                  <div className="flex sm:hidden justify-between w-full text-left">
+                    <span className="font-bold">Donor:</span> {bid.name}
+                  </div>
+                  <div className="flex sm:hidden justify-between w-full text-left">
+                    <span className="font-bold">Phone:</span> {bid._id}
+                  </div>
+                  <div className="flex sm:hidden justify-between w-full text-left">
+                    <span className="font-bold">Amount:</span> ₹
+                    {bid.amount.toLocaleString()}
+                  </div>
+
+                  {/* Desktop View */}
+                  <div className="hidden sm:block sm:w-1/6 text-left">
+                    #{index + 1}
+                  </div>
+                  <div className="hidden sm:block sm:w-3/6 text-center break-words">
                     {bid.name}
                   </div>
-                  <div className=" text-gray-600 lowercase">{bid._id}</div>
-
-
-                  <div className="sm:w-2/6 text-right break-words text-[13px] sm:text-lg">
+                  <div className="hidden sm:block text-gray-600 lowercase">
+                    {bid._id}
+                  </div>
+                  <div className="hidden sm:block sm:w-2/6 text-right break-words text-[13px] sm:text-lg">
                     ₹{bid.amount.toLocaleString()}
                   </div>
                 </li>

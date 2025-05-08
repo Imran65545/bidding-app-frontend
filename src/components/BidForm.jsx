@@ -19,7 +19,7 @@ export default function BidForm() {
   useEffect(() => {
     const fetchNames = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/bids");
+        const res = await axios.get("${import.meta.env.VITE_API_URL}/api/bids");
         const names = res.data.map((bid) => bid.name);
         setAllNames([...new Set(names)]); // remove duplicates
       } catch (err) {
@@ -32,7 +32,7 @@ export default function BidForm() {
   const fetchPhoneSuggestions = async (query) => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/api/bids/suggestions?type=phone&query=${query}`
+        `${import.meta.env.VITE_API_URL}/api/bids/suggestions?type=phone&query=${query}`
       );
       setPhoneSuggestions(res.data);
     } catch (err) {
@@ -120,7 +120,7 @@ export default function BidForm() {
             value={name}
             onChange={handleNameChange}
             required
-            autoComplete="on"
+            autoComplete="off"
           />
           {nameSuggestions.length > 0 && (
             <ul className="absolute z-10 bg-white border w-full mt-1 max-h-40 overflow-y-auto">
@@ -146,7 +146,7 @@ export default function BidForm() {
             value={phone}
             onChange={handlePhoneChange}
             required
-            autoComplete="on"
+            autoComplete="off"
           />
           {phoneSuggestions.length > 0 && (
             <ul className="absolute z-10 bg-white border w-full mt-1 max-h-40 overflow-y-auto">
