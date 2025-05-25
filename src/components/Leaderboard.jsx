@@ -5,7 +5,7 @@ import masjidImage from "../assets/PhotofromImran.jpg"; // corrected image path
 
 export default function Leaderboard() {
   const [bids, setBids] = useState([]);
-  const TARGET_AMOUNT = 2500000;
+  const TARGET_AMOUNT = 4000000;
 
   useEffect(() => {
     const fetchBids = async () => {
